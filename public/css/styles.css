@@ -62,6 +62,8 @@ h1 {
     transform: translateY(-5px); /* Move the button up by 5px */
     animation: bounce 0.5s; /* Apply bounce animation */
 }
+
+  
 @keyframes bounce {
     0% {
         transform: translateY(0);

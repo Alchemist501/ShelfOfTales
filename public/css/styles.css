@@ -40,9 +40,10 @@ h1 {
     width: 100%;
     max-height: fit-content;
     background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-    padding: 2% 2%;
+    padding: 3% 0%;
+    padding-bottom: 0.25%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap; /*Allow buttons to wrap to the next line*/
 }
 .button {
@@ -79,18 +80,18 @@ h1 {
 @keyframes change{
     0%
     {
-        background-image: url('./images/image1.png');
+        background-image: url('./../images/image1.png');
     }
     25%
     {
-        background-image: url('./images/image2.png');
+        background-image: url('./../images/image2.png');
     }
     50%
     {
-        background-image: url('./images/image3.png');
+        background-image: url('./../images/image3.png');
     }
     75%
     {
-        background-image: url('./images/image4.png');
+        background-image: url('./../images/image4.png');
     }
 }

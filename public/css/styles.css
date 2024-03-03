@@ -29,7 +29,7 @@ h1 {
 }
 .text {
     /* color: #fff; */
-    font-size: 500%;
+    font-size: 250%;
     -webkit-text-stroke: 2px rgb(248, 244, 239);
 }
 .nav-buttons {

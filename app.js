@@ -21,6 +21,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',viewRouter)
 app.use('/login',authRouter)
-const server = app.listen(3001,()=>{
+const server = app.listen(8000,()=>{
     console.log("App running on port 3000");
 });

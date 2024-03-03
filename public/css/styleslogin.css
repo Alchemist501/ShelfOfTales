@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('images/image1.png') no-repeat;
+    background: url('./../images/image2.png') no-repeat;
     background-size: cover;
     background-position: center;
   }

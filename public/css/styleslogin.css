@@ -9,11 +9,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-<<<<<<< HEAD
     background: url('/public/images/image1.png') no-repeat;
-=======
-    background: url('/images/bglogin.jpg') no-repeat;
->>>>>>> ec26a5e004c6887b496c0a68575f05d10d62dcc8
     background-size: cover;
     background-position: center;
   }

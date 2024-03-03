@@ -9,7 +9,11 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+<<<<<<< HEAD
     background: url('/images/image1.png') no-repeat;
+=======
+    background: url('/public/images/image1.png') no-repeat;
+>>>>>>> 104b65ee99c7f718ff9bd32cbe0df5fb836cf747
     background-size: cover;
     background-position: center;
   }

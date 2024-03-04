@@ -1,0 +1,19 @@
+extends base
+block head 
+    title Forget Password 
+    link(rel="stylesheet" href="css/forget.css")
+block content 
+    .container
+        form(action="#")
+            h2 Forget password
+            .input-text
+                input(type="email" required)
+                label Enter your Email
+            .Forget
+                label(for="remember")
+                    input(type="checkbox" id="remember")
+                    p Remember me
+                button(type="submit") Send Email
+            .register
+                p Don't have an account ? 
+                a(href="/register") Register

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    /* color: antiquewhite; */
   }
   body{
     display: flex;
@@ -23,7 +24,10 @@
     padding: 30px 40px;
   }
   .wrapper h1{
-    font-size: 36px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 100;
     text-align: center;
   }
   .wrapper .input-box{

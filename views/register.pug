@@ -1,0 +1,39 @@
+extends base 
+block head
+    title #{title}
+    link(rel="stylesheet" href=`css/${title}.css`)
+block content
+    .container
+        h1.form-title Registration
+        form(action="#")
+            .main-user-info
+                .user-input-box
+                    label(for="fullName") #{title}
+                    input(type="text" id="fullName" name="fullName" placeholder="Enter Full Name")
+                .user-input-box
+                    label(for="username") Username
+                    input(type="text" id="username" name="username" placeholder="Enter Username")
+                .user-input-box
+                    label(for="email") Email
+                    input(type="email" id="email" name="email" placeholder="Enter Email")
+                .user-input-box
+                    label(for="phoneNumber") Phone Number
+                    input(type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number")
+                .user-input-box
+                    label(for="password") Password
+                    input(type="password" id="password" name="password" placeholder="Enter Password")
+                .user-input-box
+                    label(for="confirmPassword") Confirm Password
+                    input(type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password")
+            .gender-details-box
+                span.gender-title Gender
+                .gender-category
+                    input(type="radio" name="gender" id="male")
+                    label(for="male") Male
+                    input(type="radio" name="gender" id="female")
+                    label(for="female") Female
+                    input(type="radio" name="gender" id="other")
+                    label(for="other")  Other
+            .form-submit-btn
+                button(type="submit" class="btn")
+                    a(href="./index.html") Register

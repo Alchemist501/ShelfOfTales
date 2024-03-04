@@ -1,26 +1,23 @@
-doctype html 
-html 
-    head   
-        meta(charset = 'UTF-8')
-        meta(name = 'viewport' content="width=device-width, initial-scale=1.0")
-        title Login Form
-        link(rel="stylesheet" href="/css/styleslogin")
-        link(href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet')
-    body 
-        .wrapper 
-            form(action = "")
-                h1 LOGIN
-                .input-box 
-                    input( type= "text" placeholder="Username" required)
-                    <i class='bx bxs-user'></i>
-                .input-box 
-                    input(type="password" placeholder="Password" required)
-                    <i class='bx bxs-lock-alt' ></i>
-                .remember-forgot
-                    label
-                        input(type = "checkbox") Remember Me
-                    a(href="#") Forgot Password
-                button(type="submit" class="btn") LOGIN
-                .register-link
-                    p Dont have an account? 
-                        a(href = "#") Register
+extends base
+block head
+    title #{title}
+    link(rel="stylesheet" href=`css/${title}.css`)
+block content
+    .wrapper 
+        form(action = "")
+            h1 LOGIN
+            .input-box 
+                input( type= "text" placeholder="Username" required)
+                <i class='bx bxs-user'></i>
+            .input-box 
+                input(type="password" placeholder="Password" required)
+                <i class='bx bxs-lock-alt' ></i>
+            .remember-forgot
+                label
+                    input(type = "checkbox") 
+                    |   Remember Me
+                a(href="/forget") Forgot Password
+            button(type="submit" class="btn") LOGIN
+            .register-link
+                p Dont have an account? 
+                    a(href = "/register") Register

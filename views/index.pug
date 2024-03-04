@@ -1,0 +1,19 @@
+extends base
+block head 
+    title #{title}
+    link(rel="stylesheet" href=`css/${title}.css`)
+block content
+    .container
+        h1 Welcome to Shelf Of Tales
+        p.text Explore Endless Tales: Your eBook Haven Awaits at Shelf of Tales!
+    .nav-buttons 
+        a.button(href="home.html") 
+            p.links Overview
+        a.button(href="/html/bookreg.html") 
+            p.links Sell Books
+        a.button(href="/html/products.html")
+            p.links BOOKS
+        a.button(href="homee.html")
+            p.links AUDIO BOOK
+        a.button(href='/login')
+            p.links LOG IN

@@ -1,23 +1,30 @@
-doctype html 
-html(lang = "en")
+doctype html
+html 
     head 
-        meta(charset = "UTF-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        title ShelfOfTales
-        link(rel='stylesheet' href='css/styles.css')
+        block head
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            title #{title}
+            link(rel="stylesheet" href=`css/${title}.css`)
     body 
-        .container
-            h1 Welcome to Shelf Of Tales
-            p.text Explore Endless Tales: Your eBook Haven Awaits at Shelf of Tales!
-        .nav-buttons 
-            a.button(href="home.html") 
-                p.links Overview
-            a.button(href="/html/bookreg.html") 
-                p.links Sell Books
-            a.button(href="/html/products.html")
-                p.links BOOKS
-            a.button(href="homee.html")
-                p.links AUDIO BOOK
-            a.button(href='/html/login.html')
-                p.links LOG IN
-    script(src = "script.js")
+        //- h1= tour 
+        //- p=user.toUpperCase() 
+        
+        //- //Unbuffered code put '-'
+        //- -const x=2*9
+        //- p= 2*x
+
+        //HEADER
+        
+        //- include _header
+        
+
+            //CONTENT
+        block content 
+
+            //FOOTER
+        //- include _footer
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
+        //- script(src='/js/mapbox.js')
+        //- script(src='/js/login.js')
+        script(src='/js/bundle.js')

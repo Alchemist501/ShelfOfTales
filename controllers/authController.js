@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const catchAsync = require('./../utils/catchAsync')
 const AppError = require('./../utils/appError')
 const User = require('./../models/User')
@@ -29,7 +30,7 @@ const createSendToken = (user, statusCode, req, res) => {
       }
     });
   };
-  exports.signup = catchAsync(async (req, res, next) => {
+  exports.signupp = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
@@ -58,16 +59,6 @@ exports.login = catchAsync(async (req, res, next) => {
   
     // 3) If everything ok, send token to client
     createSendToken(user, 200, req, res);
-  });
-  exports.signup = catchAsync(async (req, res, next) => {
-    const newUser = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm
-    });
-  
-    createSendToken(newUser, 201, res);
   });
   exports.forgotPassword = catchAsync(async (req, res, next) => {
     // 1) Get user based on POSTed email
@@ -109,4 +100,37 @@ exports.login = catchAsync(async (req, res, next) => {
       );
     }
   });
-    
+exports.signup = catchAsync(async (req,res,next)=>{
+  if(!req.body.name || !req.body.email || !req.body.password ||!req.body.passwordConfirm){
+    return next(new AppError('Please fill the fields',404));
+  }
+  const newUser = await User.create({
+    name : req.body.name,
+    email : req.body.email,
+    userName : req.body.userName,
+    phoneNumber : req.body.phoneNumber,
+    password : req.body.password,
+    passwordConfirm :req.body.passwordConfirm
+  });
+  res.status(200).json({
+    status:"succes",
+    message : "User Created",
+    user : newUser
+  })
+  next();
+})
+exports.login = catchAsync(async (req,res,next)=>{
+  if(!req.body.userName || !req.body.password){
+    return next(new AppError('Please provide username or password',400));
+  }
+  const user = await User.findOne({userName:req.body.userName}).select('+password');
+  if(!user||!(await bcrypt.compare(req.body.password , user.password))){
+    return next(new AppError('userName or password incorrect',400));
+  }
+  res.status(200).json({
+    status : "success",
+    message :"User found",
+    user
+  });
+  next();
+})

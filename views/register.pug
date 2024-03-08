@@ -5,7 +5,7 @@ block head
 block content
     .container
         h1.form-title Registration
-        form(action="#")
+        form(action="/signup" method = "post")
             .main-user-info
                 .user-input-box
                     label(for="fullName") #{title}
@@ -36,4 +36,4 @@ block content
                     label(for="other")  Other
             .form-submit-btn
                 button(type="submit" class="btn")
-                    a(href="./index.html") Register
+                    a(href="/") Register

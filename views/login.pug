@@ -4,13 +4,13 @@ block head
     link(rel="stylesheet" href=`css/${title}.css`)
 block content
     .wrapper 
-        form(action = "")
+        form(action = "/api/v1/users/login" method = "post")
             h1 LOGIN
             .input-box 
-                input( type= "text" placeholder="Username" required)
+                input( type= "text" name = "userName" placeholder="Username" required)
                 <i class='bx bxs-user'></i>
             .input-box 
-                input(type="password" placeholder="Password" required)
+                input(type="password" name = "password" placeholder="Password" required)
                 <i class='bx bxs-lock-alt' ></i>
             .remember-forgot
                 label

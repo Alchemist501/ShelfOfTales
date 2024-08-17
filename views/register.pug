@@ -5,14 +5,14 @@ block head
 block content
     .container
         h1.form-title Registration
-        form(action="/signup" method = "post")
+        form(action="/api/v1/users/signup" method = "post")
             .main-user-info
                 .user-input-box
-                    label(for="fullName") #{title}
-                    input(type="text" id="fullName" name="fullName" placeholder="Enter Full Name")
+                    label(for="fullName") Name
+                    input(type="text" id="fullName" name="name" placeholder="Enter Full Name")
                 .user-input-box
                     label(for="username") Username
-                    input(type="text" id="username" name="username" placeholder="Enter Username")
+                    input(type="text" id="username" name="userName" placeholder="Enter Username")
                 .user-input-box
                     label(for="email") Email
                     input(type="email" id="email" name="email" placeholder="Enter Email")
@@ -24,16 +24,15 @@ block content
                     input(type="password" id="password" name="password" placeholder="Enter Password")
                 .user-input-box
                     label(for="confirmPassword") Confirm Password
-                    input(type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password")
+                    input(type="password" id="confirmPassword" name="passwordConfirm" placeholder="Confirm Password")
             .gender-details-box
                 span.gender-title Gender
-                .gender-category
-                    input(type="radio" name="gender" id="male")
-                    label(for="male") Male
-                    input(type="radio" name="gender" id="female")
-                    label(for="female") Female
-                    input(type="radio" name="gender" id="other")
-                    label(for="other")  Other
+                //- .gender-category
+                //-     input(type="radio" name="gender" id="male")
+                //-     label(for="male") Male
+                //-     input(type="radio" name="gender" id="female")
+                //-     label(for="female") Female
+                //-     input(type="radio" name="gender" id="other")
+                //-     label(for="other")  Other
             .form-submit-btn
-                button(type="submit" class="btn")
-                    a(href="/") Register
+                button(type="submit" class="btn") Register

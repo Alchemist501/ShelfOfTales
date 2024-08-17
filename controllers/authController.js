@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const catchAsync = require('./../utils/catchAsync')
 const AppError = require('./../utils/appError')
 const User = require('./../models/User')
+const viewController = require('./viewControllers')
 const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRES_IN
@@ -22,13 +24,7 @@ const createSendToken = (user, statusCode, req, res) => {
     // Remove password from output
     user.password = undefined;
   
-    res.status(statusCode).json({
-      status: 'success',
-      token,
-      data: {
-        user
-      }
-    });
+    res.status(statusCode).render("index")
   };
   exports.signupp = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
@@ -101,9 +97,11 @@ exports.login = catchAsync(async (req, res, next) => {
     }
   });
 exports.signup = catchAsync(async (req,res,next)=>{
+  console.log(req.body);
   if(!req.body.name || !req.body.email || !req.body.password ||!req.body.passwordConfirm){
     return next(new AppError('Please fill the fields',404));
   }
+  console.log(req.body);
   const newUser = await User.create({
     name : req.body.name,
     email : req.body.email,
@@ -112,12 +110,7 @@ exports.signup = catchAsync(async (req,res,next)=>{
     password : req.body.password,
     passwordConfirm :req.body.passwordConfirm
   });
-  res.status(200).json({
-    status:"succes",
-    message : "User Created",
-    user : newUser
-  })
-  next();
+  createSendToken(newUser,201,req,res);
 })
 exports.login = catchAsync(async (req,res,next)=>{
   if(!req.body.userName || !req.body.password){
@@ -127,10 +120,6 @@ exports.login = catchAsync(async (req,res,next)=>{
   if(!user||!(await bcrypt.compare(req.body.password , user.password))){
     return next(new AppError('userName or password incorrect',400));
   }
-  res.status(200).json({
-    status : "success",
-    message :"User found",
-    user
-  });
+  createSendToken(user,200,req,res);
   next();
 })

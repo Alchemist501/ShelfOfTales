@@ -6,25 +6,12 @@ html
             meta(name='viewport' content='width=device-width, initial-scale=1.0')
             title #{title}
             link(rel="stylesheet" href=`css/${title}.css`)
+            -console.log(title);
     body 
-        //- h1= tour 
-        //- p=user.toUpperCase() 
-        
-        //- //Unbuffered code put '-'
-        //- -const x=2*9
-        //- p= 2*x
-
         //HEADER
-        
         //- include _header
-        
-
             //CONTENT
         block content 
 
             //FOOTER
-        //- include _footer
-        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
-        //- script(src='/js/mapbox.js')
-        //- script(src='/js/login.js')
-        script(src='/js/bundle.js')
+        

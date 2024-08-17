@@ -1,0 +1,26 @@
+extends base
+block content 
+    .container 
+        h1.form-title Add Book 
+        form(action="#", method="post") 
+            .main-user-info
+                .user-input-box
+                    label(for="booktittle") Book Title
+                    input#booktitle(type="text", name="booktitle",placeholder="Enter Book Title")
+                .user-input-box
+                    label(for="author") Author 
+                    input#author(type="text", name="author",placeholder="Enter Author") 
+                .user-input-box
+                    label(for="sellername") Seller Name
+                    input#sellername(type="text",name="sellername",placeholder="Enter Seller Name")
+                .user-input-box
+                    label(for="address") Address
+                    input#address( type="text",name="address",placeholder="Enter Address")
+                .user-input-box
+                    label(for="genre") Genre
+                    input#genre(type="genre",name="genre",placeholder="Enter Genre") 
+                .user-input-box
+                    label(for="price") Price
+                    input#price(type="text",name="price",placeholder="Enter Price") 
+            .form-submit-btn
+                input(type="submit", value="Add")

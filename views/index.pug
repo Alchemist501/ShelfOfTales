@@ -1,15 +1,12 @@
 extends base
-block head 
-    title #{title}
-    link(rel="stylesheet" href=`css/${title}.css`)
 block content
     .container
         h1 Welcome to Shelf Of Tales
         p.text Explore Endless Tales: Your eBook Haven Awaits at Shelf of Tales!
     .nav-buttons 
-        a.button(href="home.html") 
+        a.button(href="#") 
             p.links Overview
-        a.button(href="/html/bookreg.html") 
+        a.button(href="BookRegistration") 
             p.links Sell Books
         a.button(href="/html/products.html")
             p.links BOOKS

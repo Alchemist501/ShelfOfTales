@@ -1,18 +1,20 @@
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const User = require("./../models/User");
-const viewController = require("./viewControllers");
+const Token = require("../models/token");
+const sendEmail = require("../utils/sendEmail");
+
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
-const createSendToken = (user, statusCode, req, res) => {
+const createSendToken = async (user, statusCode, req, res) => {
   const token = signToken(user._id);
-
   res.cookie("jwt", token, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -20,12 +22,72 @@ const createSendToken = (user, statusCode, req, res) => {
     httpOnly: true,
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   });
-
   // Remove password from output
   user.password = undefined;
-
-  res.status(statusCode).render("index");
+  const emailToken = await new Token({
+    userId: user._id,
+    token: crypto.randomBytes(32).toString("hex"),
+  }).save();
+  const url = `${process.env.BASE_URL}users/${user._id}/verify/${emailToken.token}`;
+  await sendEmail(user.email, "Verify Email", url);
+  res.redirect(
+    "/users/:id/verify/:token",
+    {
+      message: "A mail sent to your account, Please verify!",
+    },
+    statusCode
+  );
 };
+exports.signup = catchAsync(async (req, res, next) => {
+  if (
+    !req.body.name ||
+    !req.body.email ||
+    !req.body.password ||
+    !req.body.passwordConfirm
+  ) {
+    return next(new AppError("Please fill the fields", 404));
+  }
+  const newUser = await User.create({
+    name: req.body.name,
+    email: req.body.email,
+    userName: req.body.userName,
+    phoneNumber: req.body.phoneNumber,
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
+  });
+  createSendToken(newUser, 201, req, res);
+});
+
+exports.verifyEmail = catchAsync(async (req, res) => {
+  console.lig("hiii");
+  const user = await User.findOne({ _id: req.params.id });
+  if (!user) return res.status(400).send({ message: "Invalid link" });
+  const token = await Token.findOne({
+    userId: user._id,
+    token: req.params.token,
+  });
+  if (!token) return res.status(400).send({ message: "Invalid link" });
+  await User.updateOne({ _id: user._id, verified: true });
+  await token.remove();
+  res
+    .status(200)
+    .send({ message: "Email verified successfully" })
+    .redirect("/", { title: "Shelf Of Tales" }, 200);
+});
+//
+///
+////
+//////
+///////
+////
+///
+///
+///
+///
+//
+///
+//
+
 exports.signupp = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -95,27 +157,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       500
     );
   }
-});
-exports.signup = catchAsync(async (req, res, next) => {
-  console.log(req.body);
-  if (
-    !req.body.name ||
-    !req.body.email ||
-    !req.body.password ||
-    !req.body.passwordConfirm
-  ) {
-    return next(new AppError("Please fill the fields", 404));
-  }
-  console.log(req.body);
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    userName: req.body.userName,
-    phoneNumber: req.body.phoneNumber,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
-  createSendToken(newUser, 201, req, res);
 });
 exports.login = catchAsync(async (req, res, next) => {
   if (!req.body.userName || !req.body.password) {

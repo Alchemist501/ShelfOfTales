@@ -1,7 +1,4 @@
 extends base 
-//- block head
-//-     title #{title}
-//-     link(rel="stylesheet" href=`css/${title}.css`)
 block content
     .container
         h1.form-title Registration
@@ -25,14 +22,5 @@ block content
                 .user-input-box
                     label(for="confirmPassword") Confirm Password
                     input(type="password" id="confirmPassword" name="passwordConfirm" placeholder="Confirm Password")
-            .gender-details-box
-                span.gender-title Gender
-                //- .gender-category
-                //-     input(type="radio" name="gender" id="male")
-                //-     label(for="male") Male
-                //-     input(type="radio" name="gender" id="female")
-                //-     label(for="female") Female
-                //-     input(type="radio" name="gender" id="other")
-                //-     label(for="other")  Other
             .form-submit-btn
                 button(type="submit" class="btn") Register

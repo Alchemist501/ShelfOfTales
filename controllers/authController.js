@@ -59,7 +59,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 });
 
 exports.verifyEmail = catchAsync(async (req, res) => {
-  console.lig("hiii");
+  console.log("hiii");
   const user = await User.findOne({ _id: req.params.id });
   if (!user) return res.status(400).send({ message: "Invalid link" });
   const token = await Token.findOne({

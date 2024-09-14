@@ -1,25 +1,49 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShelfOfTales</title>
-    <link rel="stylesheet" href="./../css/styles.css" />
+<!DOCTYPE html>
+<html> 
+  <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/undefined.css">
   </head>
-  <body>
+  <body> 
+    <!--HEADER-->
     <div class="container">
-      <h1>Welcome to Shelf Of Tales</h1>
-      <p class="text">
-        Explore Endless Tales: Your eBook Haven Awaits at Shelf of Tales!
-      </p>
+      <h1>Shelf Of Tales</h1>
+      <p class="text">Explore Endless Tales: Your eBook Haven Awaits at Shelf of Tales! <br><br>We are passionate about bringing stories to life for readers everywhere. Our digital shelves are filled with a vast collection of ebooks, carefully curated to satisfy the thirst for knowledge, adventure, and imagination. Whether you're seeking classic literature, contemporary bestsellers, or hidden gems from independent authors, our mission is to provide a seamless reading experience. We believe in the power of stories to inspire, transform, and transport you to worlds beyond the ordinary. Explore, discover, and lose yourself in the pages of Shelf Of Tales—where every book holds a new adventure waiting to unfold!</p>
+      <div class="nav-buttons"><a class="button" href="/"> 
+          <p class="links">Home</p></a><a class="button" href="BookRegistration"> 
+          <p class="links">Sell Books</p></a><a class="button" href="/html/products.html">
+          <p class="links">BOOKS</p></a><a class="button" href="homee.html">
+          <p class="links">AUDIO BOOK</p></a><a class="button" href="LOGIN">
+          <p class="links">LOGIN</p></a><a class="button" href="#ContactUs">
+          <p class="links">CONTACT US</p></a></div>
+      <div class="Contactcontainer">
+        <div class="contact-section" id="ContactUs">
+          <div class="contact-info">
+            <div class="text"> 
+              <h4>Contact Us </h4>
+              <p>If you have any questions, feel free to reach out to us!</p>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form method="POST" action="/submit-contact">
+              <div class="form-group">
+                <input id="name" type="text" name="name" required placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <input id="email" type="email" name="email" required placeholder="Enter your email">
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" rows="5" required placeholder="Enter your message"></textarea>
+              </div>
+              <div class="form-group">
+                <button class="Contactbutton button" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="nav-buttons">
-      <a href="home.html" class="button"><p class="links">Overview</p></a>
-      <a href="#" class="button"><p class="links">Sell Book</p></a>
-      <a href="nitrogen.html" class="button"><p class="links">BOOKS</p></a>
-      <a href="source.html" class="button"><p class="links">AUDIO BOOK</p></a>
-      <a href="profile" class="button"><p class="links">Profile</p></a>
-    </div>
-    <script src="script.js"></script>
   </body>
-</html> -->
+</html>

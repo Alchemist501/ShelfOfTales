@@ -1,0 +1,19 @@
+.Contactcontainer
+    .contact-section#ContactUs
+        .contact-info
+            .text 
+                h4 Contact Us 
+                p If you have any questions, feel free to reach out to us!
+        .contact-form
+            form(method="POST" action="/submit-contact")
+                .form-group
+                    input#name(type="text" name="name" required placeholder="Enter your name")
+                
+                .form-group
+                    input#email(type="email" name="email" required placeholder="Enter your email")
+                
+                .form-group
+                    textarea#message(name="message" rows="5" required placeholder="Enter your message")
+
+                .form-group
+                    button.Contactbutton(type="submit" class="button") Send Message
